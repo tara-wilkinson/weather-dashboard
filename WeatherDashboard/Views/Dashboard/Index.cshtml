@@ -1,0 +1,29 @@
+﻿@model WeatherDashboard.Models.WeatherReport
+
+@{
+    ViewBag.Title = "Weather Dashboard";
+}
+
+
+<div ng-app="WeatherReports" class="container">
+    <div ng-controller="WeatherController">
+        <slick init-onload="true" data="weather" autoplay="true" dots="true" cssEase="linear">
+            <div ng-repeat="wr in weather">
+                <h3>{{wr.Provider}}</h3>
+                <p>Current Temperature:  {{wr.CurrentWeather.TemperatureFarenheit}}</p>
+                <p>Current Conditions:  {{wr.CurrentWeather.ConditionsDescription}}</p>
+                <div ng-repeat="w in wr.FutureWeather" class="row">
+                    <div class="col-lg-4">
+                        {{w.ForecastDateDisplay}}
+                    </div>
+                    <div class="col-lg-4">
+                        {{w.ForecastWeather.TemperatureFarenheit}}
+                    </div>
+                    <div class="col-lg-4">
+                        {{w.ForecastWeather.ConditionsDescription}}
+                    </div>
+                </div>
+            </div>
+        </slick>
+    </div>
+</div>
